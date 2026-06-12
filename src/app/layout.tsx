@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -107,7 +108,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col bg-white">{children}</body>
+      <body className="min-h-full flex flex-col bg-white">
+        {children}
+        <WhatsAppButton />
+      </body>
     </html>
   );
 }
