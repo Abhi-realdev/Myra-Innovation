@@ -21,7 +21,6 @@ export default function Navbar({ activeSection }: NavbarProps) {
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "About Event", href: "#about" },
-    { name: "Registration", href: "#register" },
   ];
 
   return (
