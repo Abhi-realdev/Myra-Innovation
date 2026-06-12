@@ -29,7 +29,6 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
     fullName: "",
     email: "",
     phone: "",
-    whatsapp: "",
     gender: "",
     dob: "",
     organization: "",
@@ -109,7 +108,6 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
 
     const phoneRegex = /^[0-9]{10}$/;
     if (!phoneRegex.test(commonFields.phone)) return "Phone Number must be exactly 10 digits.";
-    if (!phoneRegex.test(commonFields.whatsapp)) return "WhatsApp Number must be exactly 10 digits.";
 
     if (!commonFields.gender) return "Please select your gender.";
     if (!commonFields.dob) return "Date of Birth is required.";
@@ -252,24 +250,24 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
   return (
     <section id="register" className="py-20 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="glass-premium p-8 sm:p-12 rounded-3xl border border-slate-200/50 dark:border-slate-800/80 shadow-2xl relative overflow-hidden bg-white/70 dark:bg-slate-950/70">
+        <div className="glass-premium p-8 sm:p-12 rounded-3xl border border-orange-100 shadow-xl relative overflow-hidden bg-white">
           
-          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-2xl rounded-full" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-orange-100/50 blur-2xl rounded-full" />
           
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <h2 className="text-3xl font-sans font-extrabold tracking-tight text-slate-900 dark:text-white mb-3 flex items-center justify-center gap-2">
-              <Sparkles className="w-6 h-6 text-blue-500 animate-pulse-slow" />
+            <h2 className="text-3xl font-sans font-extrabold tracking-tight text-slate-900 mb-3 flex items-center justify-center gap-2">
+              <Sparkles className="w-6 h-6 text-orange-600 animate-pulse-slow" />
               Event Registration Form
             </h2>
-            <p className="text-sm text-slate-500 dark:text-slate-400">
+            <p className="text-sm text-slate-600">
               Fill in your details accurately. Category-specific fields will adapt dynamically based on your event selection.
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Common Section Heading */}
-            <div className="border-b border-slate-200/50 dark:border-slate-800/50 pb-2">
-              <h3 className="text-md font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+            <div className="border-b border-slate-200/50 pb-2">
+              <h3 className="text-md font-bold text-black uppercase tracking-wider">
                 1. General Participant Information
               </h3>
             </div>
@@ -278,7 +276,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Full Name */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">
                   Full Name *
                 </label>
                 <input
@@ -287,13 +285,13 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="Enter full name"
                   value={commonFields.fullName}
                   onChange={(e) => setCommonFields({ ...commonFields, fullName: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
               {/* Email Address */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">
                   Email Address *
                 </label>
                 <input
@@ -302,13 +300,13 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="name@example.com"
                   value={commonFields.email}
                   onChange={(e) => setCommonFields({ ...commonFields, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
               {/* Phone Number */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">
                   Phone Number (10 digits) *
                 </label>
                 <input
@@ -318,36 +316,20 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="e.g. 9876543210"
                   value={commonFields.phone}
                   onChange={(e) => setCommonFields({ ...commonFields, phone: e.target.value.replace(/\D/g, "") })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all text-slate-800 dark:text-white"
-                />
-              </div>
-
-              {/* WhatsApp Number */}
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
-                  WhatsApp Number *
-                </label>
-                <input
-                  type="tel"
-                  required
-                  maxLength={10}
-                  placeholder="e.g. 9876543210"
-                  value={commonFields.whatsapp}
-                  onChange={(e) => setCommonFields({ ...commonFields, whatsapp: e.target.value.replace(/\D/g, "") })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
               {/* Gender */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">
                   Gender *
                 </label>
                 <select
                   required
                   value={commonFields.gender}
                   onChange={(e) => setCommonFields({ ...commonFields, gender: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
                 >
                   <option value="">Select Gender</option>
                   <option value="Male">Male</option>
@@ -359,7 +341,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
 
               {/* Date of Birth */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">
                   Date of Birth *
                 </label>
                 <input
@@ -367,13 +349,13 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   required
                   value={commonFields.dob}
                   onChange={(e) => setCommonFields({ ...commonFields, dob: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
               {/* Organization */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">
                   School / College / Company *
                 </label>
                 <input
@@ -382,13 +364,13 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="Enter organization name"
                   value={commonFields.organization}
                   onChange={(e) => setCommonFields({ ...commonFields, organization: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
               {/* Course / Class / Designation */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">
                   Course / Class / Designation *
                 </label>
                 <input
@@ -397,13 +379,13 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="e.g. B.Tech CSE / Class XII / Developer"
                   value={commonFields.courseClass}
                   onChange={(e) => setCommonFields({ ...commonFields, courseClass: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
               {/* City */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">
                   City *
                 </label>
                 <input
@@ -412,13 +394,13 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="Enter city"
                   value={commonFields.city}
                   onChange={(e) => setCommonFields({ ...commonFields, city: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
               {/* State */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">
                   State *
                 </label>
                 <input
@@ -427,13 +409,13 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="Enter state"
                   value={commonFields.state}
                   onChange={(e) => setCommonFields({ ...commonFields, state: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
               {/* Country */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">
                   Country *
                 </label>
                 <input
@@ -441,20 +423,20 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   required
                   value={commonFields.country}
                   onChange={(e) => setCommonFields({ ...commonFields, country: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
               {/* Event Category Dropdown */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">
+                <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">
                   Event Category Selection *
                 </label>
                 <select
                   required
                   value={commonFields.category}
                   onChange={handleCategoryChange}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/60 dark:bg-slate-900/60 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all text-slate-800 dark:text-white font-bold"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/60 dark:bg-slate-900/60 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white font-bold"
                 >
                   <option value="reel">🎬 Reel Making</option>
                   <option value="hackathon">💻 Hackathon</option>
@@ -466,8 +448,8 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
 
             {/* Dynamic Event-Specific Fields */}
             <div className="space-y-6 pt-4">
-              <div className="border-b border-slate-200/50 dark:border-slate-800/50 pb-2">
-                <h3 className="text-md font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+              <div className="border-b border-slate-200/50 pb-2">
+                <h3 className="text-md font-bold text-black uppercase tracking-wider">
                   2. Challenge-Specific Details
                 </h3>
               </div>
@@ -475,7 +457,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
               {commonFields.category === "reel" && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Instagram Profile Link *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Instagram Profile Link *</label>
                     <input
                       type="url"
                       required
@@ -486,7 +468,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">YouTube Channel Link (Optional)</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">YouTube Channel Link (Optional)</label>
                     <input
                       type="url"
                       placeholder="https://youtube.com/@channel"
@@ -496,7 +478,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Editing Software Used *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Editing Software Used *</label>
                     <input
                       type="text"
                       required
@@ -507,7 +489,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Best Reel/Video Link *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Best Reel/Video Link *</label>
                     <input
                       type="url"
                       required
@@ -518,7 +500,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Experience Level *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Experience Level *</label>
                     <select
                       value={reelFields.experience}
                       onChange={(e) => setReelFields({ ...reelFields, experience: e.target.value })}
@@ -530,7 +512,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     </select>
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Why do you want to participate? *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Why do you want to participate? *</label>
                     <textarea
                       required
                       rows={3}
@@ -546,7 +528,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
               {commonFields.category === "hackathon" && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Programming Languages Known *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Programming Languages Known *</label>
                     <input
                       type="text"
                       required
@@ -557,7 +539,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">GitHub Profile Link *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">GitHub Profile Link *</label>
                     <input
                       type="url"
                       required
@@ -568,7 +550,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">LinkedIn Profile Link *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">LinkedIn Profile Link *</label>
                     <input
                       type="url"
                       required
@@ -579,7 +561,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Technical Skills & Frameworks *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Technical Skills & Frameworks *</label>
                     <input
                       type="text"
                       required
@@ -590,7 +572,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Project Description (Mock/Planned) *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Project Description (Mock/Planned) *</label>
                     <textarea
                       required
                       rows={3}
@@ -601,7 +583,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Problem Statement You Want To Solve *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Problem Statement You Want To Solve *</label>
                     <textarea
                       required
                       rows={3}
@@ -617,7 +599,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
               {commonFields.category === "design" && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Design Tools Used *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Design Tools Used *</label>
                     <input
                       type="text"
                       required
@@ -628,7 +610,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Design Portfolio Link *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Design Portfolio Link *</label>
                     <input
                       type="url"
                       required
@@ -639,7 +621,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Link to your Best Work *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Link to your Best Work *</label>
                     <input
                       type="url"
                       required
@@ -650,7 +632,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Preferred Design Domain *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Preferred Design Domain *</label>
                     <select
                       value={designFields.designDomain}
                       onChange={(e) => setDesignFields({ ...designFields, designDomain: e.target.value })}
@@ -664,7 +646,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     </select>
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Creative Statement / Philosophy *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Creative Statement / Philosophy *</label>
                     <textarea
                       required
                       rows={3}
@@ -680,7 +662,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
               {commonFields.category === "blog" && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Blog / Article Links (Optional)</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Blog / Article Links (Optional)</label>
                     <input
                       type="url"
                       placeholder="Paste link to previously published article"
@@ -690,7 +672,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Primary Writing Platform *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Primary Writing Platform *</label>
                     <select
                       value={blogFields.writingPlatform}
                       onChange={(e) => setBlogFields({ ...blogFields, writingPlatform: e.target.value })}
@@ -704,7 +686,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Preferred Topics / Niches *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Preferred Topics / Niches *</label>
                     <input
                       type="text"
                       required
@@ -715,7 +697,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Writing Sample / Core Article Outline *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Writing Sample / Core Article Outline *</label>
                     <textarea
                       required
                       rows={3}
@@ -726,7 +708,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Why do you want to participate? *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Why do you want to participate? *</label>
                     <textarea
                       required
                       rows={3}
@@ -742,17 +724,17 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
 
             {/* File Upload Section */}
             <div className="space-y-6 pt-4">
-              <div className="border-b border-slate-200/50 dark:border-slate-800/50 pb-2">
-                <h3 className="text-md font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+              <div className="border-b border-slate-200/50 pb-2">
+                <h3 className="text-md font-bold text-black uppercase tracking-wider">
                   3. Submissions & Document Uploads (Max 10MB each)
                 </h3>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {/* Resume Upload */}
-                <div className="p-5 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 flex flex-col items-center justify-center text-center hover:border-blue-500/50 transition-colors relative">
+                  <div className="p-5 rounded-2xl border-2 border-dashed border-slate-200 bg-white/30 flex flex-col items-center justify-center text-center hover:border-orange-500/50 transition-colors relative">
                   <Upload className="w-8 h-8 text-slate-400 mb-3" />
-                  <span className="text-xs font-bold uppercase text-slate-700 dark:text-slate-300">Upload Resume *</span>
+                  <span className="text-xs font-bold uppercase text-black">Upload Resume *</span>
                   <span className="text-[10px] text-slate-400 mt-1">PDF or DOCX</span>
                   <input
                     type="file"
@@ -774,9 +756,9 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                 </div>
 
                 {/* Portfolio Upload */}
-                <div className="p-5 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 flex flex-col items-center justify-center text-center hover:border-blue-500/50 transition-colors relative">
+                  <div className="p-5 rounded-2xl border-2 border-dashed border-slate-200 bg-white/30 flex flex-col items-center justify-center text-center hover:border-orange-500/50 transition-colors relative">
                   <Upload className="w-8 h-8 text-slate-400 mb-3" />
-                  <span className="text-xs font-bold uppercase text-slate-700 dark:text-slate-300">Upload Portfolio *</span>
+                  <span className="text-xs font-bold uppercase text-black">Upload Portfolio *</span>
                   <span className="text-[10px] text-slate-400 mt-1">PDF or ZIP</span>
                   <input
                     type="file"
@@ -798,9 +780,9 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                 </div>
 
                 {/* Supporting Documents Upload */}
-                <div className="p-5 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800 bg-white/30 dark:bg-slate-900/30 flex flex-col items-center justify-center text-center hover:border-blue-500/50 transition-colors relative">
+                  <div className="p-5 rounded-2xl border-2 border-dashed border-slate-200 bg-white/30 flex flex-col items-center justify-center text-center hover:border-orange-500/50 transition-colors relative">
                   <Upload className="w-8 h-8 text-slate-400 mb-3" />
-                  <span className="text-xs font-bold uppercase text-slate-700 dark:text-slate-300">Supporting Docs</span>
+                  <span className="text-xs font-bold uppercase text-black">Supporting Docs</span>
                   <span className="text-[10px] text-slate-400 mt-1">PDF, ZIP, PNG, JPG (Optional)</span>
                   <input
                     type="file"
@@ -835,7 +817,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 rounded-2xl text-white font-extrabold text-lg bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 transition-all shadow-xl shadow-blue-500/20 dark:shadow-purple-500/10 flex items-center justify-center gap-2.5 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.01]"
+                className="w-full py-4 rounded-xl text-white font-semibold text-lg btn-primary shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2.5 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
               >
                 {loading ? (
                   <>

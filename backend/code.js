@@ -1,5 +1,5 @@
 /**
- * MYRA Innovation Challenge 2026 - Google Apps Script Backend
+ * MYRA'S INNOVATION CHALLENGE 2026 - Google Apps Script Backend
  * 
  * Instructions:
  * 1. Open your Google Sheet.
@@ -55,7 +55,7 @@ function doGet(e) {
     }
   }
 
-  return ContentService.createTextOutput("MYRA Backend Service Active.")
+  return ContentService.createTextOutput("MYRA'S Backend Service Active.")
     .setMimeType(ContentService.MimeType.TEXT);
 }
 
@@ -141,14 +141,13 @@ function handleRegistration(data) {
     data.fullName, // Column 3: Name
     data.email, // Column 4: Email
     data.phone, // Column 5: Phone
-    data.whatsapp, // Column 6: WhatsApp
-    data.gender, // Column 7: Gender
-    data.dob, // Column 8: DOB
-    data.organization, // Column 9: Org/School
-    data.courseClass, // Column 10: Class/Course
-    data.city, // Column 11: City
-    data.state, // Column 12: State
-    data.country, // Column 13: Country
+    data.gender, // Column 6: Gender
+    data.dob, // Column 7: DOB
+    data.organization, // Column 8: Org/School
+    data.courseClass, // Column 9: Class/Course
+    data.city, // Column 10: City
+    data.state, // Column 11: State
+    data.country, // Column 12: Country
   ];
   
   // Add category specific details
@@ -209,7 +208,7 @@ function handleRegistration(data) {
 function setupHeaders(sheet, category) {
   const commonHeaders = [
     "Timestamp", "Registration ID", "Full Name", "Email Address", "Phone Number", 
-    "WhatsApp Number", "Gender", "Date of Birth", "School/College/Organization", 
+    "Gender", "Date of Birth", "School/College/Organization", 
     "Course/Class", "City", "State", "Country"
   ];
   
@@ -243,7 +242,7 @@ function setupHeaders(sheet, category) {
   // Format Header Row
   const headerRange = sheet.getRange(1, 1, 1, allHeaders.length);
   headerRange.setFontWeight("bold");
-  headerRange.setBackground("#0a58ca");
+  headerRange.setBackground("#ea580c");
   headerRange.setFontColor("#ffffff");
   sheet.setFrozenRows(1);
 }
@@ -283,18 +282,18 @@ function getOrCreateFolder(folderName, parentFolder) {
 }
 
 function sendConfirmationEmail(recipientEmail, name, regId, categoryName) {
-  const subject = "Successfully Registered: MYRA Innovation Challenge 2026";
+  const subject = "Successfully Registered: MYRA'S INNOVATION CHALLENGE 2026";
   
   const htmlBody = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #ffffff;">
-      <div style="background-color: #0a58ca; padding: 15px; border-radius: 8px 8px 0 0; text-align: center; color: white;">
-        <h2 style="margin: 0; font-size: 20px; letter-spacing: 1px;">MYRA GLOBAL TECH</h2>
+        <div style="background-color: #0a58ca; padding: 15px; border-radius: 8px 8px 0 0; text-align: center; color: white;">
+        <h2 style="margin: 0; font-size: 20px; letter-spacing: 1px;">MYRA'S GLOBAL TECH</h2>
         <p style="margin: 5px 0 0 0; font-size: 11px; opacity: 0.9;">INNOVATION CHALLENGE 2026</p>
       </div>
       
       <div style="padding: 20px 10px; color: #334155;">
         <p style="font-size: 15px; line-height: 1.5;">Dear <strong>${name}</strong>,</p>
-        <p style="font-size: 15px; line-height: 1.5;">Congratulations! Your registration for the national-level <strong>MYRA Innovation Challenge 2026</strong> has been received and verified.</p>
+        <p style="font-size: 15px; line-height: 1.5;">Congratulations! Your registration for the national-level <strong>MYRA'S INNOVATION CHALLENGE 2026</strong> has been received and verified.</p>
         
         <div style="background-color: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 15px; margin: 25px 0; text-align: left;">
           <h3 style="margin: 0 0 10px 0; font-size: 14px; text-transform: uppercase; color: #64748b;">Official Registration Details</h3>
@@ -329,7 +328,7 @@ function sendConfirmationEmail(recipientEmail, name, regId, categoryName) {
       </div>
       
       <div style="border-t: 1px solid #e2e8f0; padding-top: 15px; text-align: center; font-size: 11px; color: #94a3b8;">
-        &copy; 2026 MYRA Global Tech. All Rights Reserved.
+        &copy; 2026 MYRA'S GLOBAL TECH. All Rights Reserved.
       </div>
     </div>
   `;

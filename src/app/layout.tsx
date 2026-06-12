@@ -15,15 +15,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MYRA Innovation Challenge 2026 | National Competition",
-  description: "Register for MYRA Innovation Challenge 2026. Compete across India in Reel Making, Hackathon, Creative Design, and Blog Writing to win MacBook, iPhone, and Smart Watches.",
-  keywords: ["MYRA Innovation Challenge", "National Hackathon India", "Reel Making Competition", "Design Contest 2026", "Blog Writing Event", "MYRA Global Tech"],
-  authors: [{ name: "MYRA Global Tech", url: "https://myraglobaltech.com" }],
+  title: "MYRA'S INNOVATION CHALLENGE 2026 | National Competition",
+  description: "Register for MYRA'S INNOVATION CHALLENGE 2026. Compete across India in Reel Making, Hackathon, Creative Design, and Blog Writing to win MacBook, iPhone, and Smart Watches.",
+  keywords: ["MYRA'S INNOVATION CHALLENGE", "National Hackathon India", "Reel Making Competition", "Design Contest 2026", "Blog Writing Event", "MYRA'S GLOBAL TECH"],
+  authors: [{ name: "MYRA'S GLOBAL TECH", url: "https://myraglobaltech.com" }],
   openGraph: {
-    title: "MYRA Innovation Challenge 2026 | Where Creativity Meets Technology",
+    title: "MYRA'S INNOVATION CHALLENGE 2026 | Where Creativity Meets Technology",
     description: "Compete nationally in Reel Making, Hackathons, Graphic Design, and Blogs. Register today to win MacBook, iPhone, and Smart Watch prizes.",
     url: "https://challenge.myraglobaltech.com",
-    siteName: "MYRA Innovation Challenge",
+    siteName: "MYRA'S INNOVATION CHALLENGE",
     locale: "en_IN",
     type: "website",
     images: [
@@ -31,13 +31,13 @@ export const metadata: Metadata = {
         url: "https://challenge.myraglobaltech.com/og-banner.png",
         width: 1200,
         height: 630,
-        alt: "MYRA Innovation Challenge 2026 Social Banner",
+        alt: "MYRA'S INNOVATION CHALLENGE 2026 Social Banner",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MYRA Innovation Challenge 2026",
+    title: "MYRA'S INNOVATION CHALLENGE 2026",
     description: "Join India's premium innovation competition. Win a MacBook, iPhone, or Smart Watch. Register now!",
     images: ["https://challenge.myraglobaltech.com/og-banner.png"],
   },
@@ -68,7 +68,7 @@ export default function RootLayout({
   const eventJsonLd = {
     "@context": "https://schema.org",
     "@type": "Event",
-    "name": "MYRA Innovation Challenge 2026",
+    "name": "MYRA'S INNOVATION CHALLENGE 2026",
     "startDate": "2026-01-15T09:00:00+05:30",
     "endDate": "2026-01-18T18:00:00+05:30",
     "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
@@ -91,7 +91,7 @@ export default function RootLayout({
     },
     "organizer": {
       "@type": "Organization",
-      "name": "MYRA Global Tech",
+      "name": "MYRA'S GLOBAL TECH",
       "url": "https://myraglobaltech.com"
     }
   };
@@ -99,33 +99,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Blocking theme script — runs before React hydrates to prevent dark/light flash & hydration mismatch */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  if (theme === 'light') {
-                    document.documentElement.classList.remove('dark');
-                  } else {
-                    document.documentElement.classList.add('dark');
-                  }
-                } catch(e) {}
-              })();
-            `,
-          }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-white">{children}</body>
     </html>
   );
 }

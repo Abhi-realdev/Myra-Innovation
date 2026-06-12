@@ -13,10 +13,10 @@ interface CategoriesProps {
 
 export default function Categories({ selectedCategory, onSelectCategory }: CategoriesProps) {
   const tabs = [
-    { id: "reel" as EventCategoryType, name: "Reel Making", icon: Film, color: "text-pink-500", border: "border-pink-500/30" },
-    { id: "hackathon" as EventCategoryType, name: "Hackathon", icon: Laptop, color: "text-emerald-500", border: "border-emerald-500/30" },
-    { id: "design" as EventCategoryType, name: "Creative & Design", icon: Palette, color: "text-cyan-500", border: "border-cyan-500/30" },
-    { id: "blog" as EventCategoryType, name: "Blog Writing", icon: PenTool, color: "text-amber-500", border: "border-amber-500/30" },
+    { id: "reel" as EventCategoryType, name: "Reel Making", icon: Film, color: "text-orange-600", border: "border-orange-500/30" },
+    { id: "hackathon" as EventCategoryType, name: "Hackathon", icon: Laptop, color: "text-orange-600", border: "border-orange-500/30" },
+    { id: "design" as EventCategoryType, name: "Creative & Design", icon: Palette, color: "text-orange-600", border: "border-orange-500/30" },
+    { id: "blog" as EventCategoryType, name: "Blog Writing", icon: PenTool, color: "text-orange-600", border: "border-orange-500/30" },
   ];
 
   // Auto-scrolling logs for Code Background
@@ -50,20 +50,16 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
   }, [selectedCategory]);
 
   return (
-    <section id="categories" className="py-20 relative overflow-hidden transition-all duration-500">
+    <section id="categories" className="py-20 relative overflow-hidden transition-all duration-500 bg-white">
       {/* Dynamic Background Blur Glow matching selected category */}
-      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full blur-3xl opacity-20 pointer-events-none transition-all duration-1000 ${
-        selectedCategory === "reel" ? "bg-pink-500" :
-        selectedCategory === "hackathon" ? "bg-emerald-500" :
-        selectedCategory === "design" ? "bg-cyan-500" : "bg-amber-500"
-      }`} />
+      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full blur-3xl opacity-10 pointer-events-none transition-all duration-1000 bg-orange-400`} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl sm:text-4xl font-sans font-bold tracking-tight text-blue-950 dark:text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-sans font-bold tracking-tight text-slate-900 mb-4">
             Event Categories
           </h2>
-          <p className="text-blue-900/70 dark:text-slate-400">
+          <p className="text-slate-600">
             Click on a category tab below to explore the details, submission guidelines, and visual environment of each challenge.
           </p>
         </div>
@@ -80,8 +76,8 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                   onClick={() => onSelectCategory(tab.id)}
                   className={`flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all duration-300 ${
                     isActive
-                      ? "bg-blue-950 dark:bg-white text-white dark:text-slate-950 shadow-lg"
-                      : "text-blue-950/70 dark:text-slate-400 hover:text-blue-950 dark:hover:text-white"
+                      ? "bg-orange-600 text-white shadow-lg"
+                      : "text-slate-600 hover:text-orange-600"
                   }`}
                 >
                   <TabIcon className={`w-4 h-4 ${isActive ? "" : tab.color}`} />
@@ -106,33 +102,33 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
               >
                 {/* Text Content */}
                 <div className="lg:col-span-7 space-y-6">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-pink-500/10 text-pink-500 text-xs font-bold uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-bold uppercase tracking-wider">
                     🎬 Content Creation
                   </div>
-                  <h3 className="text-3xl font-sans font-extrabold text-blue-950 dark:text-white">
+                  <h3 className="text-3xl font-sans font-extrabold text-slate-900">
                     Reel Making Challenge
                   </h3>
-                  <p className="text-base text-blue-900/75 dark:text-slate-400 leading-relaxed">
+                  <p className="text-base text-slate-600 leading-relaxed">
                     Unleash your storytelling, editing, and content creation skills. Craft high-impact short videos and reels that capture attention, inspire audiences, and trend across social platforms. We are looking for creators who can blend information, visual aesthetics, and innovation.
                   </p>
                   
                   <div className="space-y-3">
-                    <h4 className="font-bold text-blue-950 dark:text-slate-200">Guidelines & Deliverables:</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-blue-900/75 dark:text-slate-400">
+                    <h4 className="font-bold text-slate-700">Guidelines & Deliverables:</h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-600">
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-pink-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Max length: 60 seconds</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-pink-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Format: MP4 / MOV (Vertical 9:16)</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-pink-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Topics: Innovation, AI, Student Life, Tech</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-pink-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Original edits & clips only</span>
                       </li>
                     </ul>
@@ -141,7 +137,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                   <div className="pt-2">
                     <a
                       href="#register"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-pink-600 hover:bg-pink-500 text-white font-bold tracking-wide transition-all shadow-lg shadow-pink-500/20"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold tracking-wide transition-all shadow-lg shadow-pink-500/20"
                     >
                       Enter Reel Making
                     </a>
@@ -179,7 +175,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                         <span className="scale-90 font-semibold mt-0.5">2.4k</span>
                       </div>
                       <div className="flex flex-col items-center">
-                        <div className="p-2 rounded-full bg-black/40 backdrop-blur-sm"><Flame className="w-4.5 h-4.5 text-amber-500 fill-amber-500" /></div>
+                        <div className="p-2 rounded-full bg-black/40 backdrop-blur-sm"><Flame className="w-4.5 h-4.5 text-orange-600 fill-amber-500" /></div>
                         <span className="scale-90 font-semibold mt-0.5">850</span>
                       </div>
                       <div className="flex flex-col items-center">
@@ -209,33 +205,33 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
               >
                 {/* Text Content */}
                 <div className="lg:col-span-7 space-y-6">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-xs font-bold uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-bold uppercase tracking-wider">
                     💻 Code & Innovate
                   </div>
-                  <h3 className="text-3xl font-sans font-extrabold text-blue-950 dark:text-white">
+                  <h3 className="text-3xl font-sans font-extrabold text-slate-900">
                     Innovate-a-Thon (Hackathon)
                   </h3>
-                  <p className="text-base text-blue-900/75 dark:text-slate-400 leading-relaxed">
+                  <p className="text-base text-slate-600 leading-relaxed">
                     Build tangible digital solutions. Bring your team, conceptualize architectures, write robust software, and compile working systems. Whether it is Web Apps, AI integrations, Mobile apps, or Developer APIs - we seek programmers tackling real-world problem statements.
                   </p>
 
                   <div className="space-y-3">
-                    <h4 className="font-bold text-blue-950 dark:text-slate-200">Guidelines & Deliverables:</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-blue-900/75 dark:text-slate-400">
+                    <h4 className="font-bold text-slate-700">Guidelines & Deliverables:</h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-600">
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Team Size: Individual or up to 4</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>GitHub repository link submission</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Live hosted URL or video demo</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Original code written during challenge</span>
                       </li>
                     </ul>
@@ -244,7 +240,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                   <div className="pt-2">
                     <a
                       href="#register"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold tracking-wide transition-all shadow-lg shadow-emerald-500/20"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold tracking-wide transition-all shadow-lg shadow-emerald-500/20"
                     >
                       Enter Hackathon
                     </a>
@@ -262,7 +258,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                         <span className="w-3 h-3 rounded-full bg-green-500/80" />
                       </div>
                       <span className="text-slate-500 text-[10px] select-none">myra_dev_server.sh</span>
-                      <Terminal className="w-3.5 h-3.5 text-emerald-500" />
+                      <Terminal className="w-3.5 h-3.5 text-orange-600" />
                     </div>
 
                     {/* Scrolling terminal code lines */}
@@ -308,33 +304,33 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
               >
                 {/* Text Content */}
                 <div className="lg:col-span-7 space-y-6">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-cyan-500/10 text-cyan-550 dark:text-cyan-400 text-xs font-bold uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-bold uppercase tracking-wider">
                     🎨 Visuals & Identity
                   </div>
-                  <h3 className="text-3xl font-sans font-extrabold text-blue-950 dark:text-white">
+                  <h3 className="text-3xl font-sans font-extrabold text-slate-900">
                     Creative & Design Environment
                   </h3>
-                  <p className="text-base text-blue-900/75 dark:text-slate-400 leading-relaxed">
+                  <p className="text-base text-slate-600 leading-relaxed">
                     Craft immersive interfaces, branding packages, vector art, or structural layouts. This category is for visual architects, graphics artists, and UI/UX masterminds. Present a complete aesthetic design system, interactive Figma mockup, or high-fidelity promotional asset pack.
                   </p>
 
                   <div className="space-y-3">
-                    <h4 className="font-bold text-blue-950 dark:text-slate-200">Guidelines & Deliverables:</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-blue-900/75 dark:text-slate-400">
+                    <h4 className="font-bold text-slate-700">Guidelines & Deliverables:</h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-600">
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-cyan-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Deliverable: PDF, Figma Link, or PNG zip</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-cyan-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Include: Source files (PSD, FIG, AI)</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-cyan-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Preferred size: 300 DPI high-definition</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-cyan-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Include moodboard & typography justification</span>
                       </li>
                     </ul>
@@ -343,7 +339,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                   <div className="pt-2">
                     <a
                       href="#register"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-cyan-600 hover:bg-cyan-550 text-white font-bold tracking-wide transition-all shadow-lg shadow-cyan-500/20"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold tracking-wide transition-all shadow-lg shadow-cyan-500/20"
                     >
                       Enter Creative & Design
                     </a>
@@ -355,7 +351,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                   <div className="w-full max-w-md h-[360px] rounded-2xl glass border border-cyan-500/20 dark:border-cyan-500/10 shadow-2xl relative overflow-hidden flex flex-col p-4 bg-white/40 dark:bg-slate-950/40">
                     <div className="flex justify-between items-center pb-2 border-b border-slate-200/50 dark:border-slate-800/50 mb-4">
                       <span className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                        <Layers className="w-3.5 h-3.5 text-cyan-500" />
+                        <Layers className="w-3.5 h-3.5 text-orange-600" />
                         Figma Mockup Canvas
                       </span>
                       <span className="text-[10px] text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded-full font-semibold">100% Zoom</span>
@@ -382,7 +378,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                       {/* Design Sidebar Elements */}
                       <div className="col-span-5 flex flex-col gap-2.5 z-10">
                         <div className="rounded-xl border border-slate-200/50 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/80 p-2.5 shadow-md flex items-center gap-2 animate-float-delayed">
-                          <Brush className="w-4 h-4 text-pink-500" />
+                          <Brush className="w-4 h-4 text-orange-600" />
                           <div className="space-y-1">
                             <p className="text-[9px] font-bold text-slate-800 dark:text-white">Color Splash</p>
                             <div className="flex gap-1">
@@ -404,7 +400,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
 
                       {/* Floating Vector Cursor Pen */}
                       <div className="absolute top-1/2 left-1/3 flex flex-col items-center z-20 pointer-events-none hover:scale-105 transition-transform">
-                        <svg className="w-5 h-5 text-cyan-500 drop-shadow" viewBox="0 0 24 24" fill="currentColor">
+                        <svg className="w-5 h-5 text-orange-600 drop-shadow" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M4.5 3L3 4.5 10 11.5 12.5 9z" />
                           <circle cx="12" cy="12" r="2" fill="white" stroke="currentColor" strokeWidth="2" />
                         </svg>
@@ -427,33 +423,33 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
               >
                 {/* Text Content */}
                 <div className="lg:col-span-7 space-y-6">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-bold uppercase tracking-wider">
                     ✍️ Editorial & Content
                   </div>
-                  <h3 className="text-3xl font-sans font-extrabold text-blue-950 dark:text-white">
+                  <h3 className="text-3xl font-sans font-extrabold text-slate-900">
                     Editorial Blog Writing
                   </h3>
-                  <p className="text-base text-blue-900/75 dark:text-slate-400 leading-relaxed">
+                  <p className="text-base text-slate-600 leading-relaxed">
                     Shape opinion, report insight, or educate audiences. Write engaging articles, tech blogs, case studies, or editorial reviews that highlight innovation, industry disruptions, or student challenges. We seek writers with unique arguments, clear structures, and excellent flow.
                   </p>
 
                   <div className="space-y-3">
-                    <h4 className="font-bold text-blue-950 dark:text-slate-200">Guidelines & Deliverables:</h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-blue-900/75 dark:text-slate-400">
+                    <h4 className="font-bold text-slate-700">Guidelines & Deliverables:</h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-600">
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Word count: 500 - 1500 words</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Submit: PDF, Doc link, or Medium blog URL</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>Language: English (Professional, clear)</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
                         <span>SEO-friendly formatting (h2, lists, bold)</span>
                       </li>
                     </ul>
@@ -462,7 +458,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                   <div className="pt-2">
                     <a
                       href="#register"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold tracking-wide transition-all shadow-lg shadow-amber-500/20"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold tracking-wide transition-all shadow-lg shadow-amber-500/20"
                     >
                       Enter Blog Writing
                     </a>
@@ -474,9 +470,9 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                   <div className="w-full max-w-md h-[360px] rounded-2xl bg-[#faf9f6] dark:bg-[#121110] border border-amber-500/20 dark:border-amber-500/10 shadow-2xl p-6 font-serif relative overflow-hidden flex flex-col justify-between">
                     <div className="border-b border-amber-900/10 dark:border-amber-100/10 pb-3 mb-4 flex justify-between items-center">
                       <span className="text-[11px] font-sans font-bold text-amber-800 dark:text-amber-400 uppercase tracking-widest">
-                        MYRA Literary Review
+                        MYRA'S Literary Review
                       </span>
-                      <Pen className="w-3.5 h-3.5 text-amber-700 dark:text-amber-500" />
+                      <Pen className="w-3.5 h-3.5 text-amber-700 dark:text-orange-600" />
                     </div>
 
                     {/* Mock Blog Post Paragraphs */}
@@ -494,12 +490,12 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
 
                     {/* Article metadata footer */}
                     <div className="mt-4 pt-3 border-t border-amber-900/10 dark:border-amber-100/10 flex justify-between items-center text-[10px] font-sans text-amber-700 dark:text-amber-400">
-                      <span>Article by Team MYRA</span>
+                      <span>Article by Team MYRA'S</span>
                       <span>Word Count: 750</span>
                     </div>
 
                     {/* Ambient ink drops or alpha letters float */}
-                    <div className="absolute -bottom-8 -right-6 text-7xl font-sans font-extrabold text-amber-500/5 select-none pointer-events-none">
+                    <div className="absolute -bottom-8 -right-6 text-7xl font-sans font-extrabold text-orange-600/5 select-none pointer-events-none">
                       W
                     </div>
                   </div>
