@@ -2,12 +2,12 @@ import Image from "next/image";
 import { Globe, Mail, MapPin, Phone, Share2 } from "lucide-react";
 
 const companyLinks = [
-  { name: "Home", href: "https://www.myraglobaltech.com/" },
-  { name: "About Us", href: "https://www.myraglobaltech.com/#about" },
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "https://www.myraglobaltech.com/about-us" },
   { name: "Services", href: "https://www.myraglobaltech.com/#services" },
-  { name: "Blog", href: "https://www.myraglobaltech.com/" },
-  { name: "Careers", href: "https://www.myraglobaltech.com/#contact" },
-  { name: "Contact", href: "https://www.myraglobaltech.com/#contact" },
+  { name: "Blog", href: "https://www.myraglobaltech.com/blog" },
+  { name: "Careers", href: "https://www.myraglobaltech.com/career" },
+  { name: "Contact", href: "https://www.myraglobaltech.com/contact-us" },
 ];
 
 const serviceLinks = [
@@ -77,8 +77,9 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {...(link.href.startsWith("http")
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
                     className="text-sm text-slate-300 hover:text-orange-400 transition-colors"
                   >
                     {link.name}
