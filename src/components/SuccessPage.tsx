@@ -22,14 +22,14 @@ export default function SuccessPage({ registrationId, category, name, onGoBack }
         angle: 60,
         spread: 55,
         origin: { x: 0, y: 0.8 },
-        colors: ["#ea580c", "#f97316", "#ffffff"],
+        colors: ["#f47621", "#e66a1b", "#ffffff"],
       });
       confetti({
         particleCount: 5,
         angle: 120,
         spread: 55,
         origin: { x: 1, y: 0.8 },
-        colors: ["#ea580c", "#f97316", "#ffffff"],
+        colors: ["#f47621", "#e66a1b", "#ffffff"],
       });
 
       if (Date.now() < end) {
@@ -48,9 +48,9 @@ export default function SuccessPage({ registrationId, category, name, onGoBack }
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center pt-24 pb-16 relative overflow-hidden bg-orange-50/30">
+    <section className="min-h-screen flex items-center justify-center pt-24 pb-16 relative overflow-hidden bg-[#f47621]/20">
       <div className="max-w-xl mx-auto px-4 sm:px-6 relative z-10 w-full text-center">
-        <div className="mx-auto w-16 h-16 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center mb-6 border border-orange-200 shadow-lg">
+        <div className="mx-auto w-16 h-16 rounded-full bg-[#f47621]/20 text-[#f47621] flex items-center justify-center mb-6 border border-[#f47621]/30 shadow-lg">
           <Check className="w-8 h-8" />
         </div>
 
@@ -59,8 +59,8 @@ export default function SuccessPage({ registrationId, category, name, onGoBack }
           Congratulations! Your registration for MYRA'S INNOVATION CHALLENGE 2026 has been submitted successfully.
         </p>
 
-        <div className="glass-premium rounded-3xl border border-orange-100 shadow-xl relative overflow-hidden text-left mb-8 max-w-md mx-auto">
-          <div className="bg-orange-600 p-5 text-white flex justify-between items-center">
+        <div className="glass-premium rounded-3xl border border-[#f47621]/20 shadow-xl relative overflow-hidden text-left mb-8 max-w-md mx-auto">
+          <div className="bg-[#f47621] p-5 text-white flex justify-between items-center">
             <div className="flex items-center gap-1.5">
               <Ticket className="w-5 h-5" />
               <span className="font-bold tracking-widest text-xs uppercase">Official Entry Pass</span>
@@ -82,12 +82,12 @@ export default function SuccessPage({ registrationId, category, name, onGoBack }
             <div className="grid grid-cols-2 gap-4 pt-4 border-t border-dashed border-slate-200">
               <div>
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Registration ID</span>
-                <span className="font-mono font-bold text-sm text-orange-600 tracking-wider">{registrationId}</span>
+                <span className="font-mono font-bold text-sm text-[#f47621] tracking-wider">{registrationId}</span>
               </div>
               <div>
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Event Date</span>
                 <span className="text-xs font-semibold text-slate-600 flex items-center gap-1">
-                  <Calendar className="w-3.5 h-3.5 text-orange-600" />
+                  <Calendar className="w-3.5 h-3.5 text-[#f47621]" />
                   Jan 15-18, 2026
                 </span>
               </div>
@@ -95,8 +95,8 @@ export default function SuccessPage({ registrationId, category, name, onGoBack }
           </div>
         </div>
 
-        <div className="max-w-md mx-auto p-4 rounded-2xl bg-orange-50 border border-orange-100 text-slate-700 text-xs flex items-center gap-2.5 text-left mb-10">
-          <Mail className="w-5 h-5 shrink-0 text-orange-600" />
+        <div className="max-w-md mx-auto p-4 rounded-2xl bg-[#f47621]/10 border border-[#f47621]/20 text-slate-700 text-xs flex items-center gap-2.5 text-left mb-10">
+          <Mail className="w-5 h-5 shrink-0 text-[#f47621]" />
           <div>
             <span className="font-bold block text-slate-900">Automatic Confirmation Sent</span>
             <span className="text-slate-600">

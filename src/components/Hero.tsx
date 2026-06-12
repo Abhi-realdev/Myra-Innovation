@@ -14,8 +14,8 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-white">
       <div className="grid-bg" />
-      <div className="absolute top-1/4 right-1/4 w-72 h-72 rounded-full bg-orange-100/60 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-orange-50 blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 right-1/4 w-72 h-72 rounded-full bg-[#f47621]/25 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-[#f47621]/10 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-center">
         <motion.div
@@ -34,7 +34,7 @@ export default function Hero() {
           className="text-4xl sm:text-6xl md:text-7xl font-sans font-extrabold tracking-tight mb-4 text-slate-900"
         >
           MYRA'S INNOVATION <br />
-          <span className="text-orange-600">CHALLENGE 2026</span>
+          <span className="text-[#f47621]">CHALLENGE 2026</span>
         </motion.h1>
 
         <motion.p
@@ -63,14 +63,14 @@ export default function Hero() {
         >
           <a
             href="#register"
-            className="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-white btn-primary hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2 shadow-lg shadow-orange-500/20"
+            className="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-white btn-primary hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#f47621]/20"
           >
             Register Now
             <ArrowRight className="w-5 h-5" />
           </a>
           <a
             href="#about"
-            className="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-white btn-primary hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2 shadow-lg shadow-orange-500/10"
+            className="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-white btn-primary hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#f47621]/10"
           >
             Learn More
           </a>
@@ -88,15 +88,15 @@ export default function Hero() {
               <a
                 href="#categories"
                 key={idx}
-                className="group p-5 rounded-2xl glass hover:shadow-lg hover:border-orange-200 transition-all duration-300 text-left flex flex-col justify-between"
+                className="group p-5 rounded-2xl glass hover:shadow-lg hover:border-[#f47621]/20 transition-all duration-300 text-left flex flex-col justify-between"
               >
-                <div className="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 p-2 flex items-center justify-center mb-4 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-[#f47621]/20 text-[#f47621] p-2 flex items-center justify-center mb-4 group-hover:bg-[#f47621] group-hover:text-white transition-colors">
                   <IconComponent className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">
                     <span className="text-lg">{cat.emoji}</span>
-                    <h3 className="font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                    <h3 className="font-bold text-slate-900 group-hover:text-[#f47621] transition-colors">
                       {cat.name}
                     </h3>
                   </div>

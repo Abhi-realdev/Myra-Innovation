@@ -62,9 +62,9 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="glass p-6 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-orange-100"
+                className="glass p-6 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-[#f47621]/20"
               >
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-orange-100 text-orange-600">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-[#f47621]/10 text-[#f47621]">
                   <Icon className="w-6 h-6" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>

@@ -4,9 +4,9 @@
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 
-  --color-primary: #ea580c;
-  --color-primary-hover: #c2410c;
-  --color-primary-light: #fff7ed;
+  --color-primary: #f47621;
+  --color-primary-hover: #e66a1b;
+  --color-primary-light: #fff5ef;
   --color-footer: #0c1a3a;
   --color-text: #1e293b;
   --color-text-muted: #64748b;
@@ -29,8 +29,8 @@
   --background: #ffffff;
   --foreground: #1e293b;
   --card-bg: rgba(255, 255, 255, 0.95);
-  --card-border: rgba(234, 88, 12, 0.12);
-  --grid-color: rgba(234, 88, 12, 0.04);
+  --card-border: rgba(244, 118, 33, 0.12);
+  --grid-color: rgba(244, 118, 33, 0.04);
 }
 
 html {
@@ -53,7 +53,7 @@ body {
 
 .glass-premium {
   background: #ffffff;
-  border: 1px solid rgba(234, 88, 12, 0.1);
+  border: 1px solid rgba(244, 118, 33, 0.1);
   box-shadow: 0 10px 40px -10px rgba(15, 23, 42, 0.08);
   position: relative;
 }
@@ -72,7 +72,7 @@ body {
 }
 
 .btn-outline {
-  border: 1px solid rgba(234, 88, 12, 0.3);
+  border: 1px solid rgba(244, 118, 33, 0.3);
   color: var(--color-text);
   background: #ffffff;
   transition: border-color 0.2s ease, background-color 0.2s ease;
@@ -106,12 +106,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(234, 88, 12, 0.3);
+  background: rgba(244, 118, 33, 0.3);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(234, 88, 12, 0.5);
+  background: rgba(244, 118, 33, 0.5);
 }
 
 .grid-bg {
@@ -127,7 +127,7 @@ body {
 .theme-hackathon,
 .theme-design,
 .theme-blog {
-  --theme-accent-glow: rgba(234, 88, 12, 0.08);
+  --theme-accent-glow: rgba(244, 118, 33, 0.08);
 }
 
 .whatsapp-float {

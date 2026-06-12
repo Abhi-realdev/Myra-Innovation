@@ -1,14 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Upload, AlertCircle, Loader2, Sparkles, CheckCircle } from "lucide-react";
-
-// Types for form files
-interface FormFile {
-  base64: string;
-  name: string;
-  type: string;
-}
+import { AlertCircle, Loader2, Sparkles } from "lucide-react";
 
 interface RegistrationFormProps {
   initialCategory?: string;
@@ -18,11 +11,6 @@ interface RegistrationFormProps {
 export default function RegistrationForm({ initialCategory = "reel", onSubmitSuccess }: RegistrationFormProps) {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  
-  // File states
-  const [resumeFile, setResumeFile] = useState<FormFile | null>(null);
-  const [portfolioFile, setPortfolioFile] = useState<FormFile | null>(null);
-  const [supportFile, setSupportFile] = useState<FormFile | null>(null);
 
   // Common Fields
   const [commonFields, setCommonFields] = useState({
@@ -80,25 +68,6 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
     setErrorMsg("");
   };
 
-  // Helper: File to base64
-  const processFile = (file: File, callback: (fileData: FormFile) => void) => {
-    if (file.size > 10 * 1024 * 1024) {
-      setErrorMsg(`File ${file.name} exceeds the 10MB limit.`);
-      return;
-    }
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const base64String = (reader.result as string).split(",")[1];
-      callback({
-        base64: base64String,
-        name: file.name,
-        type: file.type,
-      });
-      setErrorMsg("");
-    };
-    reader.readAsDataURL(file);
-  };
-
   // Validation rules
   const validateForm = () => {
     if (!commonFields.fullName.trim()) return "Full Name is required.";
@@ -116,30 +85,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
     if (!commonFields.city.trim()) return "City is required.";
     if (!commonFields.state.trim()) return "State is required.";
 
-    // Validate Event-specific required fields
-    if (commonFields.category === "reel") {
-      if (!reelFields.instagramLink.trim()) return "Instagram Profile Link is required for Reel Making.";
-      if (!reelFields.editingSoftware.trim()) return "Editing Software field is required.";
-      if (!reelFields.bestReelLink.trim()) return "Link to your best reel is required.";
-      if (!reelFields.motivation.trim()) return "Why do you want to participate is required.";
-    } else if (commonFields.category === "hackathon") {
-      if (!hackathonFields.programmingLanguages.trim()) return "Programming Languages known field is required.";
-      if (!hackathonFields.githubProfile.trim()) return "GitHub Profile Link is required for Hackathon.";
-      if (!hackathonFields.linkedinProfile.trim()) return "LinkedIn Profile Link is required.";
-      if (!hackathonFields.technicalSkills.trim()) return "Technical Skills field is required.";
-      if (!hackathonFields.projectDescription.trim()) return "Project Description is required.";
-      if (!hackathonFields.problemStatement.trim()) return "Problem statement to solve is required.";
-    } else if (commonFields.category === "design") {
-      if (!designFields.designTools.trim()) return "Design Tools used field is required.";
-      if (!designFields.portfolioLink.trim()) return "Portfolio Link is required.";
-      if (!designFields.bestWorkLink.trim()) return "Best Design Link is required.";
-      if (!designFields.creativeStatement.trim()) return "Creative Statement is required.";
-    } else if (commonFields.category === "blog") {
-      if (!blogFields.preferredTopics.trim()) return "Preferred Topics field is required.";
-      if (!blogFields.writingSample.trim()) return "Writing Sample / Outline is required.";
-      if (!blogFields.motivation.trim()) return "Why do you want to participate is required.";
-    }
-
+    // Challenge-Specific Details are all OPTIONAL now
     return null;
   };
 
@@ -167,11 +113,6 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
       timestamp: new Date().toISOString(),
       ...commonFields,
       eventSpecificData,
-      files: {
-        resume: resumeFile,
-        portfolio: portfolioFile,
-        support: supportFile,
-      },
     };
 
     try {
@@ -195,11 +136,6 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
         const localReg = {
           registrationId: mockId,
           ...payload,
-          files: {
-            resume: resumeFile ? { name: resumeFile.name, url: "https://drive.google.com/mock-resume-url" } : null,
-            portfolio: portfolioFile ? { name: portfolioFile.name, url: "https://drive.google.com/mock-portfolio-url" } : null,
-            support: supportFile ? { name: supportFile.name, url: "https://drive.google.com/mock-support-url" } : null,
-          },
         };
 
         existing.push(localReg);
@@ -250,13 +186,13 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
   return (
     <section id="register" className="py-20 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="glass-premium p-8 sm:p-12 rounded-3xl border border-orange-100 shadow-xl relative overflow-hidden bg-white">
+        <div className="glass-premium p-8 sm:p-12 rounded-3xl border border-[#f47621]/20 shadow-xl relative overflow-hidden bg-white">
           
-          <div className="absolute top-0 right-0 w-32 h-32 bg-orange-100/50 blur-2xl rounded-full" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-[#f47621]/20 blur-2xl rounded-full" />
           
           <div className="text-center max-w-2xl mx-auto mb-10">
             <h2 className="text-3xl font-sans font-extrabold tracking-tight text-slate-900 mb-3 flex items-center justify-center gap-2">
-              <Sparkles className="w-6 h-6 text-orange-600 animate-pulse-slow" />
+              <Sparkles className="w-6 h-6 text-[#f47621] animate-pulse-slow" />
               Event Registration Form
             </h2>
             <p className="text-sm text-slate-600">
@@ -285,7 +221,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="Enter full name"
                   value={commonFields.fullName}
                   onChange={(e) => setCommonFields({ ...commonFields, fullName: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 focus:border-[#f47621] transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
@@ -300,7 +236,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="name@example.com"
                   value={commonFields.email}
                   onChange={(e) => setCommonFields({ ...commonFields, email: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 focus:border-[#f47621] transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
@@ -316,7 +252,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="e.g. 9876543210"
                   value={commonFields.phone}
                   onChange={(e) => setCommonFields({ ...commonFields, phone: e.target.value.replace(/\D/g, "") })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 focus:border-[#f47621] transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
@@ -329,7 +265,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   required
                   value={commonFields.gender}
                   onChange={(e) => setCommonFields({ ...commonFields, gender: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 focus:border-[#f47621] transition-all text-slate-800 dark:text-white"
                 >
                   <option value="">Select Gender</option>
                   <option value="Male">Male</option>
@@ -349,7 +285,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   required
                   value={commonFields.dob}
                   onChange={(e) => setCommonFields({ ...commonFields, dob: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 focus:border-[#f47621] transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
@@ -364,7 +300,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="Enter organization name"
                   value={commonFields.organization}
                   onChange={(e) => setCommonFields({ ...commonFields, organization: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 focus:border-[#f47621] transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
@@ -379,7 +315,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="e.g. B.Tech CSE / Class XII / Developer"
                   value={commonFields.courseClass}
                   onChange={(e) => setCommonFields({ ...commonFields, courseClass: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 focus:border-[#f47621] transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
@@ -394,7 +330,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="Enter city"
                   value={commonFields.city}
                   onChange={(e) => setCommonFields({ ...commonFields, city: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 focus:border-[#f47621] transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
@@ -409,7 +345,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   placeholder="Enter state"
                   value={commonFields.state}
                   onChange={(e) => setCommonFields({ ...commonFields, state: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 focus:border-[#f47621] transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
@@ -423,7 +359,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   required
                   value={commonFields.country}
                   onChange={(e) => setCommonFields({ ...commonFields, country: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/50 dark:bg-slate-900/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 focus:border-[#f47621] transition-all text-slate-800 dark:text-white"
                 />
               </div>
 
@@ -436,7 +372,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   required
                   value={commonFields.category}
                   onChange={handleCategoryChange}
-                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/60 dark:bg-slate-900/60 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 transition-all text-slate-800 dark:text-white font-bold"
+                  className="w-full px-4 py-3 rounded-xl border border-slate-200/85 dark:border-slate-800/85 bg-white/60 dark:bg-slate-900/60 text-sm focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 focus:border-[#f47621] transition-all text-slate-800 dark:text-white font-bold"
                 >
                   <option value="reel">🎬 Reel Making</option>
                   <option value="hackathon">💻 Hackathon</option>
@@ -457,10 +393,9 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
               {commonFields.category === "reel" && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Instagram Profile Link *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Instagram Profile Link</label>
                     <input
                       type="url"
-                      required
                       placeholder="https://instagram.com/username"
                       value={reelFields.instagramLink}
                       onChange={(e) => setReelFields({ ...reelFields, instagramLink: e.target.value })}
@@ -468,7 +403,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">YouTube Channel Link (Optional)</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">YouTube Channel Link</label>
                     <input
                       type="url"
                       placeholder="https://youtube.com/@channel"
@@ -478,10 +413,9 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Editing Software Used *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Editing Software Used</label>
                     <input
                       type="text"
-                      required
                       placeholder="e.g. Premiere Pro, CapCut, DaVinci"
                       value={reelFields.editingSoftware}
                       onChange={(e) => setReelFields({ ...reelFields, editingSoftware: e.target.value })}
@@ -489,10 +423,9 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Best Reel/Video Link *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Best Reel/Video Link</label>
                     <input
                       type="url"
-                      required
                       placeholder="Paste link to your best reel"
                       value={reelFields.bestReelLink}
                       onChange={(e) => setReelFields({ ...reelFields, bestReelLink: e.target.value })}
@@ -500,7 +433,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Experience Level *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Experience Level</label>
                     <select
                       value={reelFields.experience}
                       onChange={(e) => setReelFields({ ...reelFields, experience: e.target.value })}
@@ -512,9 +445,8 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     </select>
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Why do you want to participate? *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Why do you want to participate?</label>
                     <textarea
-                      required
                       rows={3}
                       placeholder="Briefly tell us what drives you as a content creator"
                       value={reelFields.motivation}
@@ -528,10 +460,9 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
               {commonFields.category === "hackathon" && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Programming Languages Known *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Programming Languages Known</label>
                     <input
                       type="text"
-                      required
                       placeholder="e.g. JavaScript, Python, Rust, Go"
                       value={hackathonFields.programmingLanguages}
                       onChange={(e) => setHackathonFields({ ...hackathonFields, programmingLanguages: e.target.value })}
@@ -539,10 +470,9 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">GitHub Profile Link *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">GitHub Profile Link</label>
                     <input
                       type="url"
-                      required
                       placeholder="https://github.com/username"
                       value={hackathonFields.githubProfile}
                       onChange={(e) => setHackathonFields({ ...hackathonFields, githubProfile: e.target.value })}
@@ -550,10 +480,9 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">LinkedIn Profile Link *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">LinkedIn Profile Link</label>
                     <input
                       type="url"
-                      required
                       placeholder="https://linkedin.com/in/username"
                       value={hackathonFields.linkedinProfile}
                       onChange={(e) => setHackathonFields({ ...hackathonFields, linkedinProfile: e.target.value })}
@@ -561,10 +490,9 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Technical Skills & Frameworks *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Technical Skills & Frameworks</label>
                     <input
                       type="text"
-                      required
                       placeholder="e.g. Next.js, Docker, PyTorch, SQL"
                       value={hackathonFields.technicalSkills}
                       onChange={(e) => setHackathonFields({ ...hackathonFields, technicalSkills: e.target.value })}
@@ -572,9 +500,8 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Project Description (Mock/Planned) *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Project Description (Mock/Planned)</label>
                     <textarea
-                      required
                       rows={3}
                       placeholder="Describe what product or prototype you are planning to build during the Hackathon"
                       value={hackathonFields.projectDescription}
@@ -583,9 +510,8 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Problem Statement You Want To Solve *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Problem Statement You Want To Solve</label>
                     <textarea
-                      required
                       rows={3}
                       placeholder="What real-world pain point or challenge does your code address?"
                       value={hackathonFields.problemStatement}
@@ -599,10 +525,9 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
               {commonFields.category === "design" && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Design Tools Used *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Design Tools Used</label>
                     <input
                       type="text"
-                      required
                       placeholder="e.g. Figma, Illustrator, Photoshop, Blender"
                       value={designFields.designTools}
                       onChange={(e) => setDesignFields({ ...designFields, designTools: e.target.value })}
@@ -610,10 +535,9 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Design Portfolio Link *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Design Portfolio Link</label>
                     <input
                       type="url"
-                      required
                       placeholder="https://behance.net/username or personal site"
                       value={designFields.portfolioLink}
                       onChange={(e) => setDesignFields({ ...designFields, portfolioLink: e.target.value })}
@@ -621,10 +545,9 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Link to your Best Work *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Link to your Best Work</label>
                     <input
                       type="url"
-                      required
                       placeholder="Paste direct link to your single best artwork/mockup"
                       value={designFields.bestWorkLink}
                       onChange={(e) => setDesignFields({ ...designFields, bestWorkLink: e.target.value })}
@@ -632,7 +555,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Preferred Design Domain *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Preferred Design Domain</label>
                     <select
                       value={designFields.designDomain}
                       onChange={(e) => setDesignFields({ ...designFields, designDomain: e.target.value })}
@@ -646,9 +569,8 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     </select>
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Creative Statement / Philosophy *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Creative Statement / Philosophy</label>
                     <textarea
-                      required
                       rows={3}
                       placeholder="Describe your design style, aesthetic principles, and what inspires your layouts"
                       value={designFields.creativeStatement}
@@ -662,7 +584,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
               {commonFields.category === "blog" && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Blog / Article Links (Optional)</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Blog / Article Links</label>
                     <input
                       type="url"
                       placeholder="Paste link to previously published article"
@@ -672,7 +594,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Primary Writing Platform *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Primary Writing Platform</label>
                     <select
                       value={blogFields.writingPlatform}
                       onChange={(e) => setBlogFields({ ...blogFields, writingPlatform: e.target.value })}
@@ -686,10 +608,9 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Preferred Topics / Niches *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Preferred Topics / Niches</label>
                     <input
                       type="text"
-                      required
                       placeholder="e.g. AI Ethics, Tech Disruption, Design Trends"
                       value={blogFields.preferredTopics}
                       onChange={(e) => setBlogFields({ ...blogFields, preferredTopics: e.target.value })}
@@ -697,9 +618,8 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Writing Sample / Core Article Outline *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Writing Sample / Core Article Outline</label>
                     <textarea
-                      required
                       rows={3}
                       placeholder="Provide a short sample paragraph or a structured outline of the article you wish to write"
                       value={blogFields.writingSample}
@@ -708,9 +628,8 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                     />
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Why do you want to participate? *</label>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-black mb-2">Why do you want to participate?</label>
                     <textarea
-                      required
                       rows={3}
                       placeholder="Briefly state your motivation for choosing the Editorial Blog Writing category"
                       value={blogFields.motivation}
@@ -720,88 +639,6 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
                   </div>
                 </div>
               )}
-            </div>
-
-            {/* File Upload Section */}
-            <div className="space-y-6 pt-4">
-              <div className="border-b border-slate-200/50 pb-2">
-                <h3 className="text-md font-bold text-black uppercase tracking-wider">
-                  3. Submissions & Document Uploads (Max 10MB each)
-                </h3>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Resume Upload */}
-                  <div className="p-5 rounded-2xl border-2 border-dashed border-slate-200 bg-white/30 flex flex-col items-center justify-center text-center hover:border-orange-500/50 transition-colors relative">
-                  <Upload className="w-8 h-8 text-slate-400 mb-3" />
-                  <span className="text-xs font-bold uppercase text-black">Upload Resume *</span>
-                  <span className="text-[10px] text-slate-400 mt-1">PDF or DOCX</span>
-                  <input
-                    type="file"
-                    required
-                    accept=".pdf,.docx"
-                    onChange={(e) => {
-                      if (e.target.files && e.target.files[0]) {
-                        processFile(e.target.files[0], setResumeFile);
-                      }
-                    }}
-                    className="absolute inset-0 opacity-0 cursor-pointer"
-                  />
-                  {resumeFile && (
-                    <div className="mt-3 flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 text-green-600 text-xs font-semibold max-w-full">
-                      <CheckCircle className="w-3.5 h-3.5 shrink-0" />
-                      <span className="truncate">{resumeFile.name}</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Portfolio Upload */}
-                  <div className="p-5 rounded-2xl border-2 border-dashed border-slate-200 bg-white/30 flex flex-col items-center justify-center text-center hover:border-orange-500/50 transition-colors relative">
-                  <Upload className="w-8 h-8 text-slate-400 mb-3" />
-                  <span className="text-xs font-bold uppercase text-black">Upload Portfolio *</span>
-                  <span className="text-[10px] text-slate-400 mt-1">PDF or ZIP</span>
-                  <input
-                    type="file"
-                    required
-                    accept=".pdf,.zip"
-                    onChange={(e) => {
-                      if (e.target.files && e.target.files[0]) {
-                        processFile(e.target.files[0], setPortfolioFile);
-                      }
-                    }}
-                    className="absolute inset-0 opacity-0 cursor-pointer"
-                  />
-                  {portfolioFile && (
-                    <div className="mt-3 flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 text-green-600 text-xs font-semibold max-w-full">
-                      <CheckCircle className="w-3.5 h-3.5 shrink-0" />
-                      <span className="truncate">{portfolioFile.name}</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Supporting Documents Upload */}
-                  <div className="p-5 rounded-2xl border-2 border-dashed border-slate-200 bg-white/30 flex flex-col items-center justify-center text-center hover:border-orange-500/50 transition-colors relative">
-                  <Upload className="w-8 h-8 text-slate-400 mb-3" />
-                  <span className="text-xs font-bold uppercase text-black">Supporting Docs</span>
-                  <span className="text-[10px] text-slate-400 mt-1">PDF, ZIP, PNG, JPG (Optional)</span>
-                  <input
-                    type="file"
-                    accept=".pdf,.zip,.png,.jpg,.jpeg"
-                    onChange={(e) => {
-                      if (e.target.files && e.target.files[0]) {
-                        processFile(e.target.files[0], setSupportFile);
-                      }
-                    }}
-                    className="absolute inset-0 opacity-0 cursor-pointer"
-                  />
-                  {supportFile && (
-                    <div className="mt-3 flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500/10 text-green-600 text-xs font-semibold max-w-full">
-                      <CheckCircle className="w-3.5 h-3.5 shrink-0" />
-                      <span className="truncate">{supportFile.name}</span>
-                    </div>
-                  )}
-                </div>
-              </div>
             </div>
 
             {/* Error Message banner */}
@@ -817,7 +654,7 @@ export default function RegistrationForm({ initialCategory = "reel", onSubmitSuc
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 rounded-xl text-white font-semibold text-lg btn-primary shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2.5 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                className="w-full py-4 rounded-xl text-white font-semibold text-lg btn-primary shadow-lg shadow-[#f47621]/20 flex items-center justify-center gap-2.5 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
               >
                 {loading ? (
                   <>

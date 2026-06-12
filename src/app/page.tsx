@@ -85,7 +85,7 @@ export default function Home() {
             onSelectCategory={handleSelectCategory}
           />
           <Prizes />
-          <div className="bg-orange-50/30">
+          <div className="bg-[#f47621]/10">
             <RegistrationForm
               initialCategory={activeCategory}
               onSubmitSuccess={handleRegistrationSuccess}

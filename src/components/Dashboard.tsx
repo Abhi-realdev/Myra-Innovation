@@ -267,7 +267,7 @@ export default function Dashboard() {
               placeholder="Enter admin passcode"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white/50 text-sm text-center focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 text-slate-800"
+              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white/50 text-sm text-center focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 focus:border-[#f47621] text-slate-800"
             />
             {loginError && (
               <p className="text-xs text-red-500 font-semibold flex items-center gap-1.5 justify-center">
@@ -306,7 +306,7 @@ export default function Dashboard() {
           <div className="flex gap-2">
             <button
               onClick={exportCSV}
-              className="px-4 py-2.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-sm shadow-md flex items-center gap-2 hover:scale-[1.01] transition-transform"
+              className="px-4 py-2.5 rounded-xl bg-[#f47621]/100 hover:bg-[#f47621] text-white font-bold text-sm shadow-md flex items-center gap-2 hover:scale-[1.01] transition-transform"
             >
               <Download className="w-4 h-4" />
               Export Filtered CSV
@@ -352,7 +352,7 @@ export default function Dashboard() {
               placeholder="Search by ID, Name, Email or Organization..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-white/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500 text-slate-800"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-white/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 focus:border-[#f47621] text-slate-800"
             />
           </div>
 
@@ -361,7 +361,7 @@ export default function Dashboard() {
             <select
               value={eventFilter}
               onChange={(e) => setEventFilter(e.target.value)}
-              className="w-full md:w-48 px-3 py-2.5 rounded-xl border border-slate-200 bg-white/50 text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/50 text-slate-800 font-semibold"
+              className="w-full md:w-48 px-3 py-2.5 rounded-xl border border-slate-200 bg-white/50 text-sm focus:outline-none focus:ring-2 focus:ring-[#f47621]/50 text-slate-800 font-semibold"
             >
               <option value="all">All Categories</option>
               <option value="reel">🎬 Reel Making</option>
@@ -391,7 +391,7 @@ export default function Dashboard() {
                 {filteredRegistrations.length > 0 ? (
                   filteredRegistrations.map((reg) => (
                     <tr key={reg.registrationId} className="hover:bg-slate-100/20 dark:hover:bg-slate-900/10 transition-colors text-slate-700 dark:text-slate-300">
-                      <td className="px-6 py-4 font-mono text-xs font-semibold text-orange-600">
+                      <td className="px-6 py-4 font-mono text-xs font-semibold text-[#f47621]">
                         {reg.registrationId}
                       </td>
                       <td className="px-6 py-4 font-bold text-slate-900 dark:text-white">
@@ -416,7 +416,7 @@ export default function Dashboard() {
                               target="_blank"
                               rel="noreferrer"
                               title={`Resume: ${reg.files.resume.name}`}
-                              className="p-1.5 rounded-lg bg-orange-500/10 text-orange-600 border border-orange-500/10 hover:bg-orange-500/20"
+                              className="p-1.5 rounded-lg bg-[#f47621]/10 text-[#f47621] border border-[#f47621]/10 hover:bg-[#f47621]/20"
                             >
                               <FileText className="w-3.5 h-3.5" />
                             </a>
@@ -485,7 +485,7 @@ export default function Dashboard() {
                   <div className="grid grid-cols-2 gap-y-3 gap-x-4">
                     <div>
                       <span className="text-xs text-slate-500 block">Registration ID:</span>
-                      <span className="font-mono text-xs font-bold text-orange-600">{selectedParticipant.registrationId}</span>
+                      <span className="font-mono text-xs font-bold text-[#f47621]">{selectedParticipant.registrationId}</span>
                     </div>
                     <div>
                       <span className="text-xs text-slate-500 block">Registered On:</span>
@@ -530,7 +530,7 @@ export default function Dashboard() {
                           {key.replace(/([A-Z])/g, " $1")}:
                         </span>
                         {val.startsWith("http") ? (
-                          <a href={val} target="_blank" rel="noreferrer" className="text-orange-600 hover:underline break-all text-xs font-semibold">
+                          <a href={val} target="_blank" rel="noreferrer" className="text-[#f47621] hover:underline break-all text-xs font-semibold">
                             {val}
                           </a>
                         ) : (
@@ -555,7 +555,7 @@ export default function Dashboard() {
                           rel="noreferrer"
                           className="px-4 py-2 rounded-xl border border-slate-200 dark:border-slate-800 flex items-center gap-2 hover:bg-slate-100 dark:hover:bg-slate-900"
                         >
-                          <FileText className="w-4.5 h-4.5 text-orange-600" />
+                          <FileText className="w-4.5 h-4.5 text-[#f47621]" />
                           <div className="text-left">
                             <span className="text-[10px] text-slate-400 block font-bold">RESUME</span>
                             <span className="text-xs font-semibold truncate max-w-[120px] block">{selectedParticipant.files.resume.name}</span>

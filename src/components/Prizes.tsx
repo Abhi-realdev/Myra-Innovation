@@ -63,15 +63,15 @@ export default function Prizes() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="glass rounded-3xl border border-orange-100 overflow-hidden shadow-lg flex flex-col justify-between hover:shadow-xl transition-shadow duration-300"
+                className="glass rounded-3xl border border-[#f47621]/20 overflow-hidden shadow-lg flex flex-col justify-between hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="p-6 sm:p-8">
-                  <span className="inline-block px-3 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest bg-orange-600 text-white mb-6">
+                  <span className="inline-block px-3 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-widest bg-[#f47621] text-white mb-6">
                     {prize.place}
                   </span>
 
-                  <div className="w-14 h-14 rounded-2xl bg-orange-50 border border-orange-100 flex items-center justify-center mb-6">
-                    <PrizeIcon className="w-7 h-7 text-orange-600" />
+                  <div className="w-14 h-14 rounded-2xl bg-[#f47621]/10 border border-[#f47621]/20 flex items-center justify-center mb-6">
+                    <PrizeIcon className="w-7 h-7 text-[#f47621]" />
                   </div>
 
                   <h3 className="text-2xl font-sans font-bold text-slate-900 mb-4">{prize.reward}</h3>
@@ -79,14 +79,14 @@ export default function Prizes() {
                   <ul className="space-y-3">
                     {prize.rewardList.map((item, itemIdx) => (
                       <li key={itemIdx} className="flex items-start gap-2.5 text-sm text-slate-600">
-                        <CheckCircle className="w-4 h-4 text-orange-600 shrink-0 mt-0.5" />
+                        <CheckCircle className="w-4 h-4 text-[#f47621] shrink-0 mt-0.5" />
                         <span>{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="h-1.5 w-full bg-orange-600" />
+                <div className="h-1.5 w-full bg-[#f47621]" />
               </motion.div>
             );
           })}
@@ -96,7 +96,7 @@ export default function Prizes() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass p-8 rounded-3xl border border-orange-100"
+          className="glass p-8 rounded-3xl border border-[#f47621]/20"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-4 space-y-2 text-left">
@@ -109,9 +109,9 @@ export default function Prizes() {
               {benefits.map((benefit, idx) => (
                 <div
                   key={idx}
-                  className="flex gap-2.5 items-center bg-orange-50/50 p-4 rounded-xl border border-orange-100"
+                  className="flex gap-2.5 items-center bg-[#f47621]/20 p-4 rounded-xl border border-[#f47621]/20"
                 >
-                  <div className="w-6 h-6 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-[#f47621]/10 text-[#f47621] flex items-center justify-center shrink-0">
                     <Award className="w-3.5 h-3.5" />
                   </div>
                   <span className="text-xs sm:text-sm font-medium text-slate-700">{benefit}</span>

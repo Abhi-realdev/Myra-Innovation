@@ -28,7 +28,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md py-3 shadow-sm border-b border-orange-100"
+          ? "bg-white/95 backdrop-blur-md py-3 shadow-sm border-b border-[#f47621]/20"
           : "bg-white/80 backdrop-blur-sm py-4"
       }`}
     >
@@ -46,7 +46,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
               />
             </div>
             <span className="font-bold text-lg tracking-wide text-slate-900 hidden sm:inline">
-              MYRA'S <span className="text-orange-600">GLOBAL TECH</span>
+              MYRA'S <span className="text-[#f47621]">GLOBAL TECH</span>
             </span>
           </a>
 
@@ -57,13 +57,13 @@ export default function Navbar({ activeSection }: NavbarProps) {
                 href={item.href}
                 className={`text-sm font-medium tracking-wide transition-colors duration-200 relative py-1 ${
                   activeSection === item.href.substring(1)
-                    ? "text-orange-600 font-semibold"
-                    : "text-slate-600 hover:text-orange-600"
+                    ? "text-[#f47621] font-semibold"
+                    : "text-slate-600 hover:text-[#f47621]"
                 }`}
               >
                 {item.name}
                 {activeSection === item.href.substring(1) && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-600 rounded-full" />
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#f47621] rounded-full" />
                 )}
               </a>
             ))}
@@ -78,7 +78,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-slate-600 hover:text-orange-600 hover:bg-orange-50 focus:outline-none"
+              className="p-2 rounded-lg text-slate-600 hover:text-[#f47621] hover:bg-[#f47621]/10 focus:outline-none"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -88,7 +88,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
       </div>
 
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-white border-t border-orange-100 shadow-lg transition-all duration-300 ${
+        className={`md:hidden absolute top-full left-0 right-0 bg-white border-t border-[#f47621]/20 shadow-lg transition-all duration-300 ${
           isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
@@ -100,8 +100,8 @@ export default function Navbar({ activeSection }: NavbarProps) {
               onClick={() => setIsOpen(false)}
               className={`block px-4 py-2.5 rounded-lg text-base font-medium transition-colors ${
                 activeSection === item.href.substring(1)
-                  ? "bg-orange-50 text-orange-600 border-l-2 border-orange-600"
-                  : "text-slate-700 hover:bg-orange-50/60"
+                  ? "bg-[#f47621]/10 text-[#f47621] border-l-2 border-[#f47621]"
+                  : "text-slate-700 hover:bg-[#f47621]/20"
               }`}
             >
               {item.name}

@@ -242,7 +242,7 @@ function setupHeaders(sheet, category) {
   // Format Header Row
   const headerRange = sheet.getRange(1, 1, 1, allHeaders.length);
   headerRange.setFontWeight("bold");
-  headerRange.setBackground("#ea580c");
+  headerRange.setBackground("#f47621");
   headerRange.setFontColor("#ffffff");
   sheet.setFrozenRows(1);
 }

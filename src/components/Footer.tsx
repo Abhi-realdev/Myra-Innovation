@@ -28,7 +28,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0c1a3a] text-white">
+    <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand */}
@@ -44,7 +44,7 @@ export default function Footer() {
                 />
               </div>
               <span className="font-bold text-lg tracking-wide text-white">
-                MYRA'S <span className="text-orange-400">GLOBAL TECH</span>
+                MYRA'S <span className="text-[#f47621]">GLOBAL TECH</span>
               </span>
             </a>
             <p className="text-sm text-slate-300 leading-relaxed max-w-sm">
@@ -60,7 +60,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.name}
-                    className="w-9 h-9 rounded-full bg-white/10 hover:bg-orange-500 flex items-center justify-center transition-colors"
+                    className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#f47621]/100 flex items-center justify-center transition-colors"
                   >
                     <Icon className="w-4 h-4" />
                   </a>
@@ -71,7 +71,7 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-orange-400 mb-5">Company</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-[#f47621] mb-5">Company</h3>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.name}>
@@ -80,7 +80,7 @@ export default function Footer() {
                     {...(link.href.startsWith("http")
                       ? { target: "_blank", rel: "noopener noreferrer" }
                       : {})}
-                    className="text-sm text-slate-300 hover:text-orange-400 transition-colors"
+                    className="text-sm text-slate-300 hover:text-[#f47621] transition-colors"
                   >
                     {link.name}
                   </a>
@@ -91,7 +91,7 @@ export default function Footer() {
 
           {/* Service Links */}
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-orange-400 mb-5">Services</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-[#f47621] mb-5">Services</h3>
             <ul className="space-y-3">
               {serviceLinks.map((link) => (
                 <li key={link.name}>
@@ -99,7 +99,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-slate-300 hover:text-orange-400 transition-colors"
+                    className="text-sm text-slate-300 hover:text-[#f47621] transition-colors"
                   >
                     {link.name}
                   </a>
@@ -110,20 +110,20 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-wider text-orange-400 mb-5">Contact</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider text-[#f47621] mb-5">Contact</h3>
             <ul className="space-y-4 text-sm text-slate-300">
               <li className="flex items-start gap-3">
-                <Mail className="w-4 h-4 text-orange-400 mt-0.5 shrink-0" />
-                <a href="mailto:support@myraglobaltech.com" className="hover:text-orange-400 transition-colors">
+                <Mail className="w-4 h-4 text-[#f47621] mt-0.5 shrink-0" />
+                <a href="mailto:support@myraglobaltech.com" className="hover:text-[#f47621] transition-colors">
                   support@myraglobaltech.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 text-orange-400 mt-0.5 shrink-0" />
+                <Phone className="w-4 h-4 text-[#f47621] mt-0.5 shrink-0" />
                 <span>+91 98765 43210</span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-orange-400 mt-0.5 shrink-0" />
+                <MapPin className="w-4 h-4 text-[#f47621] mt-0.5 shrink-0" />
                 <span>
                   23 GOKUL BRINDAVANAM, Simhapuri Colony Rd, Bowrampet, Hyderabad, Telangana 500043
                 </span>
@@ -142,7 +142,7 @@ export default function Footer() {
               href="https://www.myraglobaltech.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-orange-400 hover:text-orange-300 transition-colors"
+              className="text-[#f47621] hover:text-[#e66a1b] transition-colors"
             >
               MYRA'S GLOBAL TECH
             </a>

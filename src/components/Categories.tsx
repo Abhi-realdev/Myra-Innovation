@@ -13,10 +13,10 @@ interface CategoriesProps {
 
 export default function Categories({ selectedCategory, onSelectCategory }: CategoriesProps) {
   const tabs = [
-    { id: "reel" as EventCategoryType, name: "Reel Making", icon: Film, color: "text-orange-600", border: "border-orange-500/30" },
-    { id: "hackathon" as EventCategoryType, name: "Hackathon", icon: Laptop, color: "text-orange-600", border: "border-orange-500/30" },
-    { id: "design" as EventCategoryType, name: "Creative & Design", icon: Palette, color: "text-orange-600", border: "border-orange-500/30" },
-    { id: "blog" as EventCategoryType, name: "Blog Writing", icon: PenTool, color: "text-orange-600", border: "border-orange-500/30" },
+    { id: "reel" as EventCategoryType, name: "Reel Making", icon: Film, color: "text-[#f47621]", border: "border-[#f47621]/30" },
+    { id: "hackathon" as EventCategoryType, name: "Hackathon", icon: Laptop, color: "text-[#f47621]", border: "border-[#f47621]/30" },
+    { id: "design" as EventCategoryType, name: "Creative & Design", icon: Palette, color: "text-[#f47621]", border: "border-[#f47621]/30" },
+    { id: "blog" as EventCategoryType, name: "Blog Writing", icon: PenTool, color: "text-[#f47621]", border: "border-[#f47621]/30" },
   ];
 
   // Auto-scrolling logs for Code Background
@@ -52,7 +52,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
   return (
     <section id="categories" className="py-20 relative overflow-hidden transition-all duration-500 bg-white">
       {/* Dynamic Background Blur Glow matching selected category */}
-      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full blur-3xl opacity-10 pointer-events-none transition-all duration-1000 bg-orange-400`} />
+      <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full blur-3xl opacity-10 pointer-events-none transition-all duration-1000 bg-[#f47621]/25`} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-12">
@@ -76,8 +76,8 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                   onClick={() => onSelectCategory(tab.id)}
                   className={`flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all duration-300 ${
                     isActive
-                      ? "bg-orange-600 text-white shadow-lg"
-                      : "text-slate-600 hover:text-orange-600"
+                      ? "bg-[#f47621] text-white shadow-lg"
+                      : "text-slate-600 hover:text-[#f47621]"
                   }`}
                 >
                   <TabIcon className={`w-4 h-4 ${isActive ? "" : tab.color}`} />
@@ -102,7 +102,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
               >
                 {/* Text Content */}
                 <div className="lg:col-span-7 space-y-6">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-bold uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#f47621]/10 text-[#f47621] text-xs font-bold uppercase tracking-wider">
                     🎬 Content Creation
                   </div>
                   <h3 className="text-3xl font-sans font-extrabold text-slate-900">
@@ -116,19 +116,19 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                     <h4 className="font-bold text-slate-700">Guidelines & Deliverables:</h4>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-600">
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Max length: 60 seconds</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Format: MP4 / MOV (Vertical 9:16)</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Topics: Innovation, AI, Student Life, Tech</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Original edits & clips only</span>
                       </li>
                     </ul>
@@ -137,7 +137,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                   <div className="pt-2">
                     <a
                       href="#register"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold tracking-wide transition-all shadow-lg shadow-pink-500/20"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#f47621] hover:bg-[#e66a1b] text-white font-bold tracking-wide transition-all shadow-lg shadow-pink-500/20"
                     >
                       Enter Reel Making
                     </a>
@@ -175,7 +175,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                         <span className="scale-90 font-semibold mt-0.5">2.4k</span>
                       </div>
                       <div className="flex flex-col items-center">
-                        <div className="p-2 rounded-full bg-black/40 backdrop-blur-sm"><Flame className="w-4.5 h-4.5 text-orange-600 fill-amber-500" /></div>
+                        <div className="p-2 rounded-full bg-black/40 backdrop-blur-sm"><Flame className="w-4.5 h-4.5 text-[#f47621] fill-amber-500" /></div>
                         <span className="scale-90 font-semibold mt-0.5">850</span>
                       </div>
                       <div className="flex flex-col items-center">
@@ -205,7 +205,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
               >
                 {/* Text Content */}
                 <div className="lg:col-span-7 space-y-6">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-bold uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#f47621]/10 text-[#f47621] text-xs font-bold uppercase tracking-wider">
                     💻 Code & Innovate
                   </div>
                   <h3 className="text-3xl font-sans font-extrabold text-slate-900">
@@ -219,19 +219,19 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                     <h4 className="font-bold text-slate-700">Guidelines & Deliverables:</h4>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-600">
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Team Size: Individual or up to 4</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>GitHub repository link submission</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Live hosted URL or video demo</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Original code written during challenge</span>
                       </li>
                     </ul>
@@ -240,7 +240,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                   <div className="pt-2">
                     <a
                       href="#register"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold tracking-wide transition-all shadow-lg shadow-emerald-500/20"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#f47621] hover:bg-[#e66a1b] text-white font-bold tracking-wide transition-all shadow-lg shadow-emerald-500/20"
                     >
                       Enter Hackathon
                     </a>
@@ -258,7 +258,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                         <span className="w-3 h-3 rounded-full bg-green-500/80" />
                       </div>
                       <span className="text-slate-500 text-[10px] select-none">myra_dev_server.sh</span>
-                      <Terminal className="w-3.5 h-3.5 text-orange-600" />
+                      <Terminal className="w-3.5 h-3.5 text-[#f47621]" />
                     </div>
 
                     {/* Scrolling terminal code lines */}
@@ -304,7 +304,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
               >
                 {/* Text Content */}
                 <div className="lg:col-span-7 space-y-6">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-bold uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#f47621]/10 text-[#f47621] text-xs font-bold uppercase tracking-wider">
                     🎨 Visuals & Identity
                   </div>
                   <h3 className="text-3xl font-sans font-extrabold text-slate-900">
@@ -318,19 +318,19 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                     <h4 className="font-bold text-slate-700">Guidelines & Deliverables:</h4>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-600">
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Deliverable: PDF, Figma Link, or PNG zip</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Include: Source files (PSD, FIG, AI)</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Preferred size: 300 DPI high-definition</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Include moodboard & typography justification</span>
                       </li>
                     </ul>
@@ -339,7 +339,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                   <div className="pt-2">
                     <a
                       href="#register"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold tracking-wide transition-all shadow-lg shadow-cyan-500/20"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#f47621] hover:bg-[#e66a1b] text-white font-bold tracking-wide transition-all shadow-lg shadow-cyan-500/20"
                     >
                       Enter Creative & Design
                     </a>
@@ -351,7 +351,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                   <div className="w-full max-w-md h-[360px] rounded-2xl glass border border-cyan-500/20 dark:border-cyan-500/10 shadow-2xl relative overflow-hidden flex flex-col p-4 bg-white/40 dark:bg-slate-950/40">
                     <div className="flex justify-between items-center pb-2 border-b border-slate-200/50 dark:border-slate-800/50 mb-4">
                       <span className="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                        <Layers className="w-3.5 h-3.5 text-orange-600" />
+                        <Layers className="w-3.5 h-3.5 text-[#f47621]" />
                         Figma Mockup Canvas
                       </span>
                       <span className="text-[10px] text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded-full font-semibold">100% Zoom</span>
@@ -378,7 +378,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                       {/* Design Sidebar Elements */}
                       <div className="col-span-5 flex flex-col gap-2.5 z-10">
                         <div className="rounded-xl border border-slate-200/50 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/80 p-2.5 shadow-md flex items-center gap-2 animate-float-delayed">
-                          <Brush className="w-4 h-4 text-orange-600" />
+                          <Brush className="w-4 h-4 text-[#f47621]" />
                           <div className="space-y-1">
                             <p className="text-[9px] font-bold text-slate-800 dark:text-white">Color Splash</p>
                             <div className="flex gap-1">
@@ -400,7 +400,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
 
                       {/* Floating Vector Cursor Pen */}
                       <div className="absolute top-1/2 left-1/3 flex flex-col items-center z-20 pointer-events-none hover:scale-105 transition-transform">
-                        <svg className="w-5 h-5 text-orange-600 drop-shadow" viewBox="0 0 24 24" fill="currentColor">
+                        <svg className="w-5 h-5 text-[#f47621] drop-shadow" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M4.5 3L3 4.5 10 11.5 12.5 9z" />
                           <circle cx="12" cy="12" r="2" fill="white" stroke="currentColor" strokeWidth="2" />
                         </svg>
@@ -423,7 +423,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
               >
                 {/* Text Content */}
                 <div className="lg:col-span-7 space-y-6">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-100 text-orange-600 text-xs font-bold uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#f47621]/10 text-[#f47621] text-xs font-bold uppercase tracking-wider">
                     ✍️ Editorial & Content
                   </div>
                   <h3 className="text-3xl font-sans font-extrabold text-slate-900">
@@ -437,19 +437,19 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                     <h4 className="font-bold text-slate-700">Guidelines & Deliverables:</h4>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-slate-600">
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Word count: 500 - 1500 words</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Submit: PDF, Doc link, or Medium blog URL</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>Language: English (Professional, clear)</span>
                       </li>
                       <li className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-orange-600 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#f47621] shrink-0" />
                         <span>SEO-friendly formatting (h2, lists, bold)</span>
                       </li>
                     </ul>
@@ -458,7 +458,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                   <div className="pt-2">
                     <a
                       href="#register"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold tracking-wide transition-all shadow-lg shadow-amber-500/20"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#f47621] hover:bg-[#e66a1b] text-white font-bold tracking-wide transition-all shadow-lg shadow-amber-500/20"
                     >
                       Enter Blog Writing
                     </a>
@@ -472,7 +472,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                       <span className="text-[11px] font-sans font-bold text-amber-800 dark:text-amber-400 uppercase tracking-widest">
                         MYRA'S Literary Review
                       </span>
-                      <Pen className="w-3.5 h-3.5 text-amber-700 dark:text-orange-600" />
+                      <Pen className="w-3.5 h-3.5 text-amber-700 dark:text-[#f47621]" />
                     </div>
 
                     {/* Mock Blog Post Paragraphs */}
@@ -495,7 +495,7 @@ export default function Categories({ selectedCategory, onSelectCategory }: Categ
                     </div>
 
                     {/* Ambient ink drops or alpha letters float */}
-                    <div className="absolute -bottom-8 -right-6 text-7xl font-sans font-extrabold text-orange-600/5 select-none pointer-events-none">
+                    <div className="absolute -bottom-8 -right-6 text-7xl font-sans font-extrabold text-[#f47621]/5 select-none pointer-events-none">
                       W
                     </div>
                   </div>
