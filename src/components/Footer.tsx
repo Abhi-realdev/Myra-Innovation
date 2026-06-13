@@ -114,8 +114,8 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-slate-300">
               <li className="flex items-start gap-3">
                 <Mail className="w-4 h-4 text-[#f47621] mt-0.5 shrink-0" />
-                <a href="mailto:support@myraglobaltech.com" className="hover:text-[#f47621] transition-colors">
-                  support@myraglobaltech.com
+                <a href="mailto:info@myraglobaltech.com" className="hover:text-[#f47621] transition-colors">
+                  info@myraglobaltech.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
